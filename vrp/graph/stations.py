@@ -1,6 +1,3 @@
-import json
-
-
 class Stations:
 
     @staticmethod
@@ -15,13 +12,17 @@ class Stations:
     # each station as tuple containing (id, lat, lng)
     #############################################################
     @classmethod
-    def get_stations_data_file(self, filename, num_stations):
+    def get_stations_data_file(self, filename, num_stations, depot=None):
         f = open(filename, 'r')
         data = f.readlines()
         f.close()
 
+        if depot is None:
+            depot = "0,50.7170968,4.268208"
+
         g = open(filename.strip('.txt') + "_stations.txt", 'w')
         g.write(str(num_stations) + "\n")
+        g.write(depot + "\n")
         idx = 1
         for i in range(10, 10 + num_stations):
             curr_line = data[i]
@@ -43,8 +44,7 @@ class Stations:
         data = f.readlines()
 
         self.nV = int(data[0])
-        self.nE = int(data[1])
-        self.depot = self.get_geo_coordinates_tuple(data[2])
+        self.depot = self.get_geo_coordinates_tuple(data[1])
         self.V = list()
         for i in range(self.nV):
             self.V.append(self.get_geo_coordinates_tuple(data[2 + i]))
