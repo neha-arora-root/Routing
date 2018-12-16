@@ -42,15 +42,16 @@ def get_polyline(source, destination):
     try:
         directions_api_response = requests.get(request_url, request_params)
         json_data = json.loads(directions_api_response.text)
-        print("Server returned response for "+str(source)+" and destination "+str(destination))
+        print("Server returned response for " + str(source) + " and destination " + str(destination))
         routes = json_data["routes"]
 
         if len(routes) > 0:
             for each_route in routes:
-                curr_polyline = each_route["overview_polyline"]["points"]
+                curr_polyline = str(each_route["overview_polyline"]["points"])
+                print(curr_polyline)
                 polylines.append(curr_polyline)
     except:
-        print("Request for ("+source+") and destination ("+destination+") unsuccessful!")
+        print("Request for (" + source + ") and destination (" + destination + ") unsuccessful!")
     return polylines
 
 
@@ -146,13 +147,14 @@ def test_decode_polyline(polyline, list_geo_coordinates):
     return tests_covered / total_test_cases
 
 
-polyline = "}wjiGtdpcNrAlBJZ"
-polyline2 = "_p~iF~ps|U_ulLnnqC_mqNvxq`@"
-geo_points_list = decode_polyline(polyline)
-print_geo_points_list(geo_points_list)
-print("\n")
-test_decode_polyline([polyline, polyline2], [[[43.64175, -79.38651], [43.64133, -79.38706], [43.64127, -79.3872]],
-                                             [[38.5, -120.2], [40.7, -120.95], [43.252, -126.453]]])
-
-paths = get_paths_between_points((43.64175, -79.38651), (43.64127, -79.3872))
-print(paths)
+# polyline = "}wjiGtdpcNrAlBJZ"
+# polyline2 = "_p~iF~ps|U_ulLnnqC_mqNvxq`@"
+# geo_points_list = decode_polyline(polyline)
+# print_geo_points_list(geo_points_list)
+# print("\n")
+# test_decode_polyline([polyline, polyline2], [[[43.64175, -79.38651], [43.64133, -79.38706], [43.64127, -79.3872]],
+#                                              [[38.5, -120.2], [40.7, -120.95], [43.252, -126.453]]])
+#
+# paths = get_paths_between_points((43.64175, -79.38651), (43.64127, -79.3872))
+# print(paths)
+paths = get_paths_between_points((50.7170968, 4.268208), (51.0678307, 3.7290914))

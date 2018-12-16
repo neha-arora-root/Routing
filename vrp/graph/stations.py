@@ -46,28 +46,33 @@ class Stations:
         data = f.readlines()
         f.close()
 
-        g = open(stations_filename.strip('stations.txt') + "paths.txt", 'w')
-        total_stations = int(data[0])
-        g.write(str(total_stations) + '\n')
-        g.write(data[1])
-        depot_id, depot_lat, depot_lng = data[1].split(",")
-        depot = (depot_lat, depot_lng)
-        for i in range(2, total_stations + 2):
-            node, curr_lat, curr_lng = data[i].split(",")
-            curr_node = (curr_lat, curr_lng)
-            all_paths = poly.get_paths_between_points(curr_node, depot)
-            g.write("Node:" + str(node) + '\n')
+        output_filename = stations_filename.strip('stations.txt') + "paths.txt"
+        with open(output_filename, "w") as g:
 
-            paths, polylines = all_paths["paths"], all_paths["polylines"]
+            total_stations = int(data[0])
+            g.write(str(total_stations))
+            g.write("\n")
+            g.write(data[1])
+            depot_id, depot_lat, depot_lng = data[1].split(",")
+            depot = (depot_lat, depot_lng)
+            for i in range(2, total_stations + 2):
+                node, curr_lat, curr_lng = data[i].split(",")
+                curr_node = (curr_lat, curr_lng)
+                all_paths = poly.get_paths_between_points(curr_node, depot)
+                g.write("Node:" + str(node))
+                g.write("\n")
+                paths, polylines = all_paths["paths"], all_paths["polylines"]
 
-            if len(paths) == 0:
-                print("Empty response for source: " + str(curr_node) + "and destination: " + str(depot))
-                continue
-            g.write("Polylines:" + str(len(polylines)) + "\n")
-            for j in range(len(polylines)):
-                g.write(polylines[j] + '\n')
-                g.write(str(paths[j]) + '\n')
-        g.close()
+                if len(paths) == 0:
+                    print("Empty response for source: " + str(curr_node) + "and destination: " + str(depot))
+                    continue
+                g.write("Polylines:" + str(len(polylines)))
+                g.write("\n")
+                for j in range(len(polylines)):
+                    g.write(polylines[j])
+                    g.write("\n")
+                    g.write(str(paths[j]))
+                    g.write("\n")
 
     def write_polylines_from_path(self, source_file, dest_file):
         f = open(source_file, 'r')
@@ -126,8 +131,8 @@ class Stations:
 
 
 stations_50 = Stations('/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50.txt', 50, False)
-# stations_50.write_paths_file('/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_stations.txt')
-# stations_50.write_polylines_from_path('/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_paths.txt',
-#                                       '/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_polylines.txt')
-stations_50.write_geopoints_from_path('/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_paths.txt',
-                                      '/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_geopoints.txt')
+stations_50.write_paths_file('/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_stations.txt')
+stations_50.write_polylines_from_path('/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_paths.txt',
+                                      '/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_polylines.txt')
+# stations_50.write_geopoints_from_path('/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_paths.txt',
+#                                       '/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_geopoints.txt')

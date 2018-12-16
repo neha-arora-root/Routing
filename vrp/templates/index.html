@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
+    <!--<meta charset="utf-8">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -23,10 +23,6 @@
              padding: 0;
            }
 
-
-
-
-
     </style>
 </head>
 <body>
@@ -44,6 +40,26 @@
 <div class="row" id="map">
     <script  type="text/javascript">
         var map;
+
+        function readTextFile(file) {
+            var rawFile = new XMLHttpRequest();
+            console.log("Here 1");
+            rawFile.open("GET", file, false);
+            console.log("Here 2");
+            rawFile.onreadystatechange = function()
+            {
+                if(rawFile.readyState === 4)
+                {
+                    if(rawFile.status === 200 || rawFile.status == 0)
+                    {
+                        var allText = rawFile.responseText;
+                        alert(allText);
+                    }
+                }
+            }
+            rawFile.send(null);
+        }
+        //data_stations = readTextFile('file:///Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_stations.txt');
         var option1 = [
             [51.0678307,3.7290914],
             [50.459267,4.8504571],
@@ -107,6 +123,7 @@
               mapTypeId: google.maps.MapTypeId.TERRAIN,
               zoom: 8
            });
+           var bounds = new google.maps.LatLngBounds();
 
            var total_stations = 20;
            var pinIcon = new google.maps.MarkerImage(
@@ -141,7 +158,8 @@
 
            //var total_polylines = option1_polylines.length;
            for (var i = 0; i < 1; i++) {
-               var path = "eeuvHwiwUTdDv@|EHh@`@Kc@cCm@sDQ{DFoHGcCI_D@w@Ty@\YfK}DvBq@p@IjB`AjAU`IwCfAm@j@}@z@oBzAs@zFwBbFyBpB{@~Ac@pAeAj@@`Bs@LSnAQnIqCjA]dI_D|AcBnNaQtDwE~BcCRKx@IvAb@xFbHrDdGjGzIlI~HtCnCpAp@vEvArA`Ch@hEDRTKhAm@rC{AfDwA`KeF`HwC~Bc@j@Gd@[n@Af@@hAH`Cb@hEfBlJhGrTfOxL`I~L`H|\rRdItEdAdAv@|BjAdHr@pBp@dAz@n@|@\t@FnAO~@e@jAuAx@sBReB?aBMcAu@{CQcB?eCX{BlDkRX_DToA|Hka@xO_y@rIwd@bM{|@~DuXvBcM~DqU`Jcg@bDeQtFkVjWafAhHcYjIyYlKm\hNc`@rd@kjAfg@woAjK_Z|JwZ`Xm|@j^mlAnkAk{Dtg@icB|\uhAnKq^zCaN|A{IlBkNlAkLjMotApBqT~AmTt@sV@wWWuMiAuTgBuRgDsYqB}R{A_Ug@mOMiMBwRTuKv@eQnA_PnAaLxB_OnBgKjFsSbD}J~EmMrD_I~IwPdFmJtEyJtEmL`FcPfCeKjEwUzBqQdLmqAjCgTxD_T~Rsz@rSs|@rk@adC|Ngn@nHg\lFuYhQmfAdSwnAdDuXjM{hBfHsdAzAi\VuPBuKm@s]eAoSqKq}AgA_PaAkSY{MAqMf@oX`OetCbCma@nEic@fBePh@uCxCaVnA}GVy@^m@nAiCx@u@x@_@zAIrDdAzBp@lDl@~EfAjC^NBZMt@JhAJtABjGEbMu@pHe@hScBjIoAzGaBzMmEbFmB~KcEfLcFfDuB`HmFjJmJvIeJrFyElE{BvEsA~B[tBItEJbHz@vB\lg@bIhMhBdMfBjDTzEM`BWbD{@xBeAtCsB~HaIzYo\vCqDzBmDxC}FhByEhE{OlCsKtDwKjDmGpDyElDcD`GuEfY_UzDeChA[`BIhAPlAj@dFfE`BdArElBfFjAdC\nGb@jEF|F?fO`@lNhA`O|BfOvDxG|B`JvDzOjInUbOdQdLnHpErNzHjHhDlTpIrRjHrWbKjHtDlGhEzFxErGvGhGtHlP~SjIjIhIxFlHlDnE~A`FjAxEt@pZrC`OnB`KvBX`@rCx@bCfAdAvAx@zBf@`DFrCMdCk@zDuApFoBdGgAxFSjDBxDt@pGdBzEnBjDjDlGz@yCjCqLrAcDj@e@H@ZPZEjE_E`CqBjCeBxAmATOh@w@fEsIP_@S_AiCyQc@gDi@oDX?tCnApBR";
+               var polyline = "eeuvHwiwUTdDv@|EHh@`@Kc@cCm@sDQ{DFoHGcCI_D@w@Ty@\YfK}DvBq@p@IjB`AjAU`IwCfAm@j@}@z@oBzAs@zFwBbFyBpB{@~Ac@pAeAj@@`Bs@LSnAQnIqCjA]dI_D|AcBnNaQtDwE~BcCRKx@IvAb@xFbHrDdGjGzIlI~HtCnCpAp@vEvArA`Ch@hEDRTKhAm@rC{AfDwA`KeF`HwC~Bc@j@Gd@[n@Af@@hAH`Cb@hEfBlJhGrTfOxL`I~L`H|\rRdItEdAdAv@|BjAdHr@pBp@dAz@n@|@\t@FnAO~@e@jAuAx@sBReB?aBMcAu@{CQcB?eCX{BlDkRX_DToA|Hka@xO_y@rIwd@bM{|@~DuXvBcM~DqU`Jcg@bDeQtFkVjWafAhHcYjIyYlKm\hNc`@rd@kjAfg@woAjK_Z|JwZ`Xm|@j^mlAnkAk{Dtg@icB|\uhAnKq^zCaN|A{IlBkNlAkLjMotApBqT~AmTt@sV@wWWuMiAuTgBuRgDsYqB}R{A_Ug@mOMiMBwRTuKv@eQnA_PnAaLxB_OnBgKjFsSbD}J~EmMrD_I~IwPdFmJtEyJtEmL`FcPfCeKjEwUzBqQdLmqAjCgTxD_T~Rsz@rSs|@rk@adC|Ngn@nHg\lFuYhQmfAdSwnAdDuXjM{hBfHsdAzAi\VuPBuKm@s]eAoSqKq}AgA_PaAkSY{MAqMf@oX`OetCbCma@nEic@fBePh@uCxCaVnA}GVy@^m@nAiCx@u@x@_@zAIrDdAzBp@lDl@~EfAjC^NBZMt@JhAJtABjGEbMu@pHe@hScBjIoAzGaBzMmEbFmB~KcEfLcFfDuB`HmFjJmJvIeJrFyElE{BvEsA~B[tBItEJbHz@vB\lg@bIhMhBdMfBjDTzEM`BWbD{@xBeAtCsB~HaIzYo\vCqDzBmDxC}FhByEhE{OlCsKtDwKjDmGpDyElDcD`GuEfY_UzDeChA[`BIhAPlAj@dFfE`BdArElBfFjAdC\nGb@jEF|F?fO`@lNhA`O|BfOvDxG|B`JvDzOjInUbOdQdLnHpErNzHjHhDlTpIrRjHrWbKjHtDlGhEzFxErGvGhGtHlP~SjIjIhIxFlHlDnE~A`FjAxEt@pZrC`OnB`KvBX`@rCx@bCfAdAvAx@zBf@`DFrCMdCk@zDuApFoBdGgAxFSjDBxDt@pGdBzEnBjDjDlGz@yCjCqLrAcDj@e@H@ZPZEjE_E`CqBjCeBxAmATOh@w@fEsIP_@S_AiCyQc@gDi@oDX?tCnApBR";
+               var path = google.maps.geometry.encoding.decodePath(polyline);
                var polyline = new google.maps.Polyline({
                    path: path,
                    strokeColor: '#FF0000',
@@ -155,9 +173,7 @@
                    // strokeWeight: 2
                });
                polyline.setMap(map);
-               map.fitBounds(bounds);
            }
-
         }
 
     </script>
