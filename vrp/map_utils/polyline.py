@@ -1,3 +1,59 @@
+import requests
+import json
+
+with open('../config/map_config.json', 'r') as f:
+    config = json.load(f)
+
+
+########################################################################################################
+# Get the paths between two points in terms of compressed polylines and all the geo points for each path
+# Input: source and destination geopoints
+# Output: dict of list of polylines and list of geopoints for each polylines
+########################################################################################################
+
+
+def get_paths_between_points(source, destination):
+    list_of_polylines = get_polyline(source, destination)
+    list_of_decoded_polylines = list()
+    for polyline in list_of_polylines:
+        list_of_decoded_polylines.append(decode_polyline(polyline))
+    return {"polylines": list_of_polylines, "paths": list_of_decoded_polylines}
+
+
+########################################################################################################
+# Extract polylines for given source and destination in geo-points
+# Input: tuples: source, destination
+# Output: list of strings: a list of all polylines
+########################################################################################################
+
+
+def get_polyline(source, destination):
+    source_lat, source_lng = source
+    dest_lat, dest_lng = destination
+
+    request_url = "https://" + config["google_maps_apis"]["directions_api_url"]
+    request_params = {
+        "origin": str(source_lat) + "," + str(source_lng),
+        "destination": str(dest_lat) + "," + str(dest_lng),
+        "alternatives": "true",
+        "key": config["google_maps_apis"]["key"]
+    }
+    polylines = list()
+    try:
+        directions_api_response = requests.get(request_url, request_params)
+        json_data = json.loads(directions_api_response.text)
+        print("Server returned response for "+str(source)+" and destination "+str(destination))
+        routes = json_data["routes"]
+
+        if len(routes) > 0:
+            for each_route in routes:
+                curr_polyline = each_route["overview_polyline"]["points"]
+                polylines.append(curr_polyline)
+    except:
+        print("Request for ("+source+") and destination ("+destination+") unsuccessful!")
+    return polylines
+
+
 ########################################################################################################
 # Jeffrey Sambell's implementation for decoding a polyline that is output from Google's Directions API
 # encoded_polyline: an ASCII string that contains the information of coordinates between source and
@@ -97,3 +153,6 @@ print_geo_points_list(geo_points_list)
 print("\n")
 test_decode_polyline([polyline, polyline2], [[[43.64175, -79.38651], [43.64133, -79.38706], [43.64127, -79.3872]],
                                              [[38.5, -120.2], [40.7, -120.95], [43.252, -126.453]]])
+
+paths = get_paths_between_points((43.64175, -79.38651), (43.64127, -79.3872))
+print(paths)

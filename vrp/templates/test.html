@@ -1,0 +1,83 @@
+<!-- vrp/templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <title>Vehicle Routing Problem</title>
+    <style>
+           /* Always set the map height explicitly to define the size of the div
+            * element that contains the map. */
+           #map {
+             height: 100%;
+           }
+           /* Optional: Makes the sample page fill the window. */
+
+           html, body, #map {
+             height: 100%;
+             margin: 0;
+             padding: 0;
+           }
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="row" style="padding-left:20px; padding-top:10px; padding-bottom:10px">
+    <div class="col-lg-2" style="text-align:center">
+        Submit input file
+    </div>
+    <div class="col-lg-6">
+        <button type="button" class="btn btn-primary">Submit</button>
+    </div>
+
+</div>
+
+<div class="row" id="map">
+    <script type="text/javascript">
+        var map;
+
+        function initMap() {
+
+            map = new google.maps.Map(
+                document.getElementById("map"), {
+                center: new google.maps.LatLng(50.7170968, 4.268208),
+                zoom: 13,
+                mapTypeId: google.maps.MapTypeId.TERRAIN
+            });
+
+            var path1 = "yj~rH_hr\`CxCx@Pl@Mv@u@fCaDr@t@RfA]n@s@x@cC~FmBj@_Da@aCkBc@LcG[c@v@sBzGaEsCqAkAkBgCYoA?QKYICiBqE}FwR}HgWc@sD\y@b@\GhAo@zBeC~Hs@d@uAPqAL_@j@sBvFQhEeBvJeFpU]|C[~F@fFLjZ@xCR`h@DpLFpTWhg@UxPs@rMa@dEqCfRyE|QoJf[oDtIoDfHqGtJeIdIcLhIwHrE]WYBUb@CXo@v@eDhCgUlOiOtJm@TMMUEg@`@G`@a@r@aHvEqB~@OC[SaAoEMcEXcB`AoApAKvAlA^hA\jDN`FAlJ_Avy@{CfaCwDh~CEn[FzPp@l`@fCjs@|B|m@~@b`@PxRJv_AHr~@H`vCh@bv@dBhg@tBl]|AzQjG~i@`Jnj@lDbRhZv~Az|@byEzJno@bF|b@nBnShD`d@dC~f@t@d_@CfV_Aj_@gDbg@uF|j@aE`\wJbn@aLxm@cGt^qGje@{Dt]_D~]mCj_@qA~XMbLJtP`@lMpA`QtAdLbClN`J|_@lKvd@bApJDpE[vDcAhDiAfByB|AqBZsDKqCGwHw@mGe@wFK_GFmHd@_MjBiM`CyIv@}JHmJk@uSqBoKAeIp@}IjBqGzBwGfDeGdEcLvKcFvGqHhM{BzEqFxNuPli@uGtSoHfRoJ`ReL|PaOlPcIxGqJpG{OxIai@bZ_[dQ}FpDwLjJyIhIaI|IcP|TaOrXmJ~U_HjW{CjPsDp[gA`Rg@l_@TfR|@|S`Dvr@jA`^?pVoAfb@}@zS}@lFgCxEwAfAgBp@{ET}Di@gLwDqRyImFqCs@EgKyE_I_CgLoBwJm@cPTsJhA{Dx@{MnEyKxFg^bWeN~GcJvCiGlA{KhA}JLiMo@aHgAuFsAyK_E}HgEkJyGeOmMwLoI_GaDgGoC}GsBiGqAkOwAqWa@c_@o@cXeAiRgAqc@yDyWcCk`@gCs_@qA}Y[eHPgKv@}IpA}G|A_QhFoGfCoPhIwHhEgM~ImMfLwFvGgLrPyHnOsElLkG|SgIp_@gIpZkDhJsE|JoFhJaF~GmF~FgGvF_ExCkI~EsGnCeGdBqMnB_MVcH[oImAaIuBwI{CyCeAmA{@yAgAw@iBKyA`@{Bz@y@x@C|@n@b@rAHfCUnFoCtTiDbN_B~E{@tFMbDLxE`AdGtAhD|ClFn@lAhAtBL[Pg@~@_E~BcK|@kBj@_@HAl@ZtGgGbFkDnAkAvA{BrDsHeDcUg@wDUwBd@NjDjAfAH";
+            // var path = google.maps.geometry.encoding.decodePath(jsonData.overview_polyline.points);
+
+
+            var polyline = new google.maps.Polyline({
+                path: google.maps.geometry.encoding.decodePath(path1),
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#FF0000',
+                fillOpacity: 0.35,
+                map: map
+                // strokeColor: "#0000FF",
+                // strokeOpacity: 1.0,
+                // strokeWeight: 2
+            });
+            polyline.setMap(map);
+
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-JSvRgLd0QpqeFoeyVRFUdHkLnKRK4OI&callback=initMap&libraries=geometry"
+            async defer></script>
+</div>
+
+</body>
+</html>
