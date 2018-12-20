@@ -1,4 +1,5 @@
 import vrp.map_utils.polyline as poly
+from vrp.map_utils.haversine import get_haversine_distance
 
 
 class Stations:
@@ -35,6 +36,56 @@ class Stations:
             idx += 1
         g.close()
 
+    ##################################################################################################################
+    # Getting neighbors of geopoints within a given radius
+    # Input: Geopoints for all stations, radius in m
+    # Output: File with neighbors of all geopoints
+    ##################################################################################################################
+    @classmethod
+    def write_neighbors_for_statoins(self, input_file, output_file, radius_in_km=10):
+
+        with open(input_file, 'r') as stations_file:
+            data = stations_file.readlines()
+        all_stations = list()
+        num_stations = int(data[0].strip("\n"))
+        for i in range(1, num_stations + 1):
+            curr_station = data[i]
+            curr_station_values = curr_station.strip("\n").split(",")
+            curr_lat, curr_lng = float(curr_station_values[1]), float(curr_station_values[2])
+            all_stations.append((curr_lat, curr_lng))
+        neighbors = dict()
+        for source in all_stations:
+            for match in all_stations:
+                if match == source:
+                    continue
+                haversine_distance = get_haversine_distance(source, match)
+                if haversine_distance > radius_in_km:
+                    continue
+                if source in neighbors:
+                    neighbors[source].append(match)
+                else:
+                    neighbors[source] = [match]
+
+        print(neighbors)
+        neighbors_file =  open(output_file, 'w')
+        neighbors_polyline_file = open(output_file.strip('.txt') + '_polylines.txt', 'w')
+        neighbors_paths_file = open(output_file.strip('.txt') + '_paths.txt', 'w')
+        neighbors_file.write(str(num_stations))
+        neighbors_file.write("\n")
+        for station in all_stations:
+            if station in neighbors:
+                neighbors_file.write(str(station) + ": " + str(neighbors[station]))
+                neighbors_file.write("\n")
+                for neighbor_station in neighbors[station]:
+                    neighbor_paths = poly.get_paths_between_points(station, neighbor_station)
+                    all_polylines = neighbor_paths["polylines"]
+                    all_paths = neighbor_paths["paths"]
+                    for i in range(len(all_polylines)):
+                        neighbors_polyline_file.write(all_polylines[i].replace("\\", "\\\\"))
+                        neighbors_polyline_file.write("\n")
+                        neighbors_paths_file.write(str(all_paths[i]))
+                        neighbors_paths_file.write("\n")
+
     ###################################################################################################################
     # Find the paths between a point and depot and store in a file in the form of encoded polylines and geo-points
     # Input: set of points, depot (lat, lng)
@@ -58,9 +109,9 @@ class Stations:
             for i in range(2, total_stations + 2):
                 node, curr_lat, curr_lng = data[i].split(",")
                 curr_node = (curr_lat, curr_lng)
-                all_paths = poly.get_paths_between_points(curr_node, depot)
                 g.write("Node:" + str(node))
                 g.write("\n")
+                all_paths = poly.get_paths_between_points(curr_node, depot)
                 paths, polylines = all_paths["paths"], all_paths["polylines"]
 
                 if len(paths) == 0:
@@ -69,11 +120,12 @@ class Stations:
                 g.write("Polylines:" + str(len(polylines)))
                 g.write("\n")
                 for j in range(len(polylines)):
-                    g.write(polylines[j])
+                    g.write(polylines[j].replace("\\", "\\\\"))
                     g.write("\n")
                     g.write(str(paths[j]))
                     g.write("\n")
 
+    @classmethod
     def write_polylines_from_path(self, source_file, dest_file):
         f = open(source_file, 'r')
         data = f.readlines()
@@ -131,8 +183,10 @@ class Stations:
 
 
 stations_50 = Stations('/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50.txt', 50, False)
-stations_50.write_paths_file('/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_stations.txt')
-stations_50.write_polylines_from_path('/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_paths.txt',
-                                      '/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_polylines.txt')
+# stations_50.write_paths_file('/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_stations.txt')
+# stations_50.write_polylines_from_path('/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_paths.txt',
+#                                       '/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_polylines.txt')
 # stations_50.write_geopoints_from_path('/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_paths.txt',
 #                                       '/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_geopoints.txt')
+stations_50.write_neighbors_for_statoins('/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_stations.txt',
+                                         '/Users/nehaarora/Documents/github/Routing/vrp/data/belgium_50_neighbors.txt')
