@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1cf95da-0fe3-4ca0-9c6b-05e21fc728ef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/vrp/map_utils/haversine.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vrp/model/vrp_env.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vrp/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vrp/model/actor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vrp/model/critic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vrp/model/train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vrp/data/belgium_50_paths.txt" beforeDir="false" afterPath="$PROJECT_DIR$/vrp/data/belgium_50_paths.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vrp/data/belgium_50_polylines.txt" beforeDir="false" afterPath="$PROJECT_DIR$/vrp/data/belgium_50_polylines.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vrp/graph/stations.py" beforeDir="false" afterPath="$PROJECT_DIR$/vrp/graph/stations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vrp/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/vrp/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vrp/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/vrp/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vrp/model/vrp_env.py" beforeDir="false" afterPath="$PROJECT_DIR$/vrp/model/vrp_env.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +63,7 @@
         <counts>
           <entry key="html" value="619" />
           <entry key="json" value="75" />
-          <entry key="py" value="9054" />
+          <entry key="py" value="12918" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
@@ -74,14 +72,14 @@
           <entry key="HTML" value="619" />
           <entry key="JSON" value="75" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="9054" />
+          <entry key="Python" value="12918" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="2" />
           <entry key="json" value="1" />
-          <entry key="py" value="25" />
+          <entry key="py" value="49" />
           <entry key="txt" value="7" />
         </counts>
       </usages-collector>
@@ -90,7 +88,7 @@
           <entry key="HTML" value="2" />
           <entry key="JSON" value="1" />
           <entry key="PLAIN_TEXT" value="7" />
-          <entry key="Python" value="25" />
+          <entry key="Python" value="49" />
         </counts>
       </usages-collector>
     </session>
@@ -100,8 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vrp/graph/stations.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="79" column="6" selection-start-line="79" selection-start-column="6" selection-end-line="79" selection-end-column="6" />
+            <state relative-caret-position="30">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
                 <marker date="1545021064109" expanded="true" signature="1804:3914" ph="..." />
@@ -111,11 +109,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vrp/map_utils/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vrp/model/vrp_env.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+            <state relative-caret-position="633">
+              <caret line="92" column="58" selection-start-line="92" selection-start-column="58" selection-end-line="92" selection-end-column="58" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -124,56 +127,51 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vrp/data/belgium_50_neighbors.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vrp/data/belgium_50_neighbors_polylines.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vrp/map_utils/polyline.py">
+        <entry file="file://$PROJECT_DIR$/vrp/model/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+            <state relative-caret-position="283">
+              <caret line="95" column="23" lean-forward="true" selection-start-line="95" selection-start-column="23" selection-end-line="95" selection-end-column="23" />
               <folding>
-                <element signature="e#0#15#0" expanded="true" />
-                <marker date="1544961537488" expanded="true" signature="878:880" ph="..." />
-                <marker date="1544961537488" expanded="true" signature="1285:2341" ph="..." />
-                <marker date="1544961537488" expanded="true" signature="3943:4062" ph="..." />
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vrp/model/actor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="83">
+              <caret line="62" column="35" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vrp/test.py">
+        <entry file="file://$PROJECT_DIR$/vrp/model/critic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vrp/data/belgium_50_polylines.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="4" column="1254" selection-start-line="4" selection-start-column="1254" selection-end-line="4" selection-end-column="1254" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vrp/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-385">
-              <caret line="303" column="695" selection-start-line="303" selection-start-column="695" selection-end-line="303" selection-end-column="695" />
+            <state relative-caret-position="346">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vrp/map_utils/polyline.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+                <marker date="1544961537488" expanded="true" signature="878:880" ph="..." />
+                <marker date="1544961537488" expanded="true" signature="1285:2341" ph="..." />
+                <marker date="1544961537488" expanded="true" signature="3943:4062" ph="..." />
               </folding>
             </state>
           </provider>
@@ -189,6 +187,7 @@
       <find>|\u</find>
       <find>\u</find>
       <find>\t</find>
+      <find>cutoff</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -210,9 +209,12 @@
         <option value="$PROJECT_DIR$/vrp/map_utils/polyline.py" />
         <option value="$PROJECT_DIR$/vrp/map_utils/haversine.py" />
         <option value="$PROJECT_DIR$/vrp/test.py" />
-        <option value="$PROJECT_DIR$/vrp/graph/stations.py" />
         <option value="$PROJECT_DIR$/vrp/templates/index.html" />
+        <option value="$PROJECT_DIR$/vrp/graph/stations.py" />
+        <option value="$PROJECT_DIR$/vrp/model/critic.py" />
         <option value="$PROJECT_DIR$/vrp/model/vrp_env.py" />
+        <option value="$PROJECT_DIR$/vrp/model/train.py" />
+        <option value="$PROJECT_DIR$/vrp/model/actor.py" />
       </list>
     </option>
   </component>
@@ -243,6 +245,18 @@
               <item name="Routing" type="462c0819:PsiDirectoryNode" />
               <item name="vrp" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Routing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Routing" type="462c0819:PsiDirectoryNode" />
+              <item name="vrp" type="462c0819:PsiDirectoryNode" />
+              <item name="map_utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Routing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Routing" type="462c0819:PsiDirectoryNode" />
+              <item name="vrp" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -267,7 +281,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.train">
     <configuration name="polyline (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Routing" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -352,14 +366,37 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Routing" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/vrp/model" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/vrp/model/train.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.test" />
       <item itemvalue="Python.polyline" />
       <item itemvalue="Python.polyline (1)" />
       <item itemvalue="Python.stations" />
+      <item itemvalue="Python.train" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.train" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.stations" />
         <item itemvalue="Python.polyline (1)" />
@@ -384,13 +421,13 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32891566" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.6421687" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5481928" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -414,6 +451,11 @@
           <line>188</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/vrp/model/actor.py</url>
+          <line>57</line>
+          <option name="timeStamp" value="141" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -425,49 +467,96 @@
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
+    <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>probs is None</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>math.isnan(probs[0])</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>sum(probs_states) &lt; 1e-6</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>sum(probs_states) &lt; 0.0001</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>sum(demand) == 0</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>to_state_id == 13</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>st</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>if to_state_id == 13</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>neighbors[source]</expression-string>
+        <expression-string>if probs is None:</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>match</expression-string>
+        <expression-string>probs.eval()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>neighbors[source].append(match)</expression-string>
+        <expression-string>probs[0].min()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>neighbors[station]</expression-string>
+        <expression-string>probs[0].min</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>R</expression-string>
+        <expression-string>probs[0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>len(polylines)</expression-string>
+        <expression-string>probs.T[0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>json_data</expression-string>
+        <expression-string>probs.ravel()[0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>directions_api_response</expression-string>
+        <expression-string>probs</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>directions_api_response.content</expression-string>
+        <expression-string>math.isnan(probs[0])</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>math.isnan(probs)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -525,9 +614,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vrp/map_utils/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/vrp/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -545,13 +631,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
           <caret line="340" selection-start-line="340" selection-end-line="340" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.conda/envs/PycharmProjects/lib/python3.6/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="308" selection-start-line="308" selection-end-line="308" />
         </state>
       </provider>
     </entry>
@@ -605,19 +684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vrp/map_utils/polyline.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <marker date="1544961537488" expanded="true" signature="878:880" ph="..." />
-            <marker date="1544961537488" expanded="true" signature="1285:2341" ph="..." />
-            <marker date="1544961537488" expanded="true" signature="3943:4062" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vrp/data/belgium_50_neighbors_polylines.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -642,10 +708,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vrp/map_utils/polyline.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1544961537488" expanded="true" signature="878:880" ph="..." />
+            <marker date="1544961537488" expanded="true" signature="1285:2341" ph="..." />
+            <marker date="1544961537488" expanded="true" signature="3943:4062" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vrp/model/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vrp/map_utils/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/vrp/graph/stations.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="79" column="6" selection-start-line="79" selection-start-column="6" selection-end-line="79" selection-end-column="6" />
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
             <marker date="1545021064109" expanded="true" signature="1804:3914" ph="..." />
@@ -654,12 +739,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/PycharmProjects/lib/python3.6/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="308" selection-start-line="308" selection-end-line="308" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/PycharmProjects/lib/python3.6/site-packages/tensorflow/python/client/session.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="1127" selection-start-line="1127" selection-end-line="1127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/PycharmProjects/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="891" selection-start-line="891" selection-end-line="891" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vrp/model/critic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/PycharmProjects/lib/python3.6/site-packages/numpy/core/arrayprint.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="1490" selection-start-line="1490" selection-end-line="1490" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/PycharmProjects/lib/python3.6/site-packages/numpy/core/getlimits.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="376" selection-start-line="376" selection-end-line="376" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/PycharmProjects/lib/python3.6/site-packages/tensorflow/python/framework/ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="620" selection-start-line="620" selection-end-line="620" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vrp/model/vrp_env.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        <state relative-caret-position="633">
+          <caret line="92" column="58" selection-start-line="92" selection-start-column="58" selection-end-line="92" selection-end-column="58" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vrp/model/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="95" column="23" lean-forward="true" selection-start-line="95" selection-start-column="23" selection-end-line="95" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vrp/model/actor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="62" column="35" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
